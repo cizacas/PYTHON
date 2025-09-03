@@ -1,4 +1,30 @@
 # PYTHON
+- [PYTHON](#python)
+  - [Introducción](#introducción)
+  - [Instalación de Python en el entorno windows](#instalación-de-python-en-el-entorno-windows)
+    - [**Ventajas de esta instalación:**](#ventajas-de-esta-instalación)
+  - [Configuración del entorno de desarrollo integrado (IDE)](#configuración-del-entorno-de-desarrollo-integrado-ide)
+    - [**Ventajas de VS Code para Python:**](#ventajas-de-vs-code-para-python)
+    - [Extensiones recomendadas de Python en VS Code:](#extensiones-recomendadas-de-python-en-vs-code)
+    - [**¿Qué es Pylint?**](#qué-es-pylint)
+      - [1. **Detectar errores antes de ejecutar**](#1-detectar-errores-antes-de-ejecutar)
+      - [2. **Mejorar la calidad del código**](#2-mejorar-la-calidad-del-código)
+      - [3. **Seguir las convenciones de Python (PEP 8)**](#3-seguir-las-convenciones-de-python-pep-8)
+      - [4. **Aprender mientras programas**](#4-aprender-mientras-programas)
+      - [Ejemplo práctico:](#ejemplo-práctico)
+      - [¿Es necesario para empezar?](#es-necesario-para-empezar)
+    - [¿Qué es Jupyter?](#qué-es-jupyter)
+      - [1. **Experimentar paso a paso**](#1-experimentar-paso-a-paso)
+      - [2. **Combinar código con explicaciones**](#2-combinar-código-con-explicaciones)
+      - [3. **Ideal para aprendizaje**](#3-ideal-para-aprendizaje)
+      - [4. **Muy usado en ciencia de datos**](#4-muy-usado-en-ciencia-de-datos)
+      - [Ejemplo de uso:](#ejemplo-de-uso)
+      - [¿Es esencial para empezar?](#es-esencial-para-empezar)
+    - [Configurar el VSCode: **Detectar la versión de Python** y **Configurar el intérprete**](#configurar-el-vscode-detectar-la-versión-de-python-y-configurar-el-intérprete)
+  - [Modo interactivo](#modo-interactivo)
+  - [Utilizar comentarios](#utilizar-comentarios)
+  - [Definición de variables](#definición-de-variables)
+  - [Tipos de datos](#tipos-de-datos)
 
 ## Introducción
 `Python` es un lenguaje de programación potente y fácil de aprender. Tiene estructuras de datos de alto nivel eficientes y un simple pero efectivo sistema de programación orientado a objetos. La elegante sintaxis de Python y su tipado dinámico, junto a su naturaleza interpretada lo convierten en un lenguaje ideal para scripting y desarrollo rápido de aplicaciones en muchas áreas, para la mayoría de plataformas.
@@ -532,6 +558,7 @@ Si el paso es n, entonces se toman cada n-ésimo carácter. Por ejemplo, la long
 ''
 ```
 Las cadenas son inmutables, lo que significa que no pueden ser cambiadas después de ser creadas. Por ejemplo, la asignación de un carácter individual en una cadena produce un error:
+
 ```python
 >>> word[0] = 'J'
 Traceback (most recent call last):
