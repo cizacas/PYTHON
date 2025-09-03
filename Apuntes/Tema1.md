@@ -25,6 +25,8 @@
   - [Utilizar comentarios](#utilizar-comentarios)
   - [Definición de variables](#definición-de-variables)
   - [Tipos de datos](#tipos-de-datos)
+  - [Listas](#listas)
+    - [Más sobre listas](#más-sobre-listas)
 
 ## Introducción
 `Python` es un lenguaje de programación potente y fácil de aprender. Tiene estructuras de datos de alto nivel eficientes y un simple pero efectivo sistema de programación orientado a objetos. La elegante sintaxis de Python y su tipado dinámico, junto a su naturaleza interpretada lo convierten en un lenguaje ideal para scripting y desarrollo rápido de aplicaciones en muchas áreas, para la mayoría de plataformas.
@@ -565,5 +567,197 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module> 
 TypeError: 'str' object does not support item assignment
 ```
+## Listas
+Python tiene varios tipos de datos _compuestos_, utilizados para agrupar otros valores. El más versátil es la _lista_, la cual puede ser escrita como una lista de valores separados por coma (ítems) entre corchetes. Las listas pueden contener ítems de diferentes tipos, pero usualmente los ítems son del mismo tipo.
+```python
+>>> squares = [1, 4, 9, 16, 25]
+>>> squares
+[1, 4, 9, 16, 25]
+```
+Al igual que las cadenas (y todas las demás tipos integrados sequence), las listas se pueden indexar y segmentar:
+```python
+>>> squares[0]  # primer elemento
+1
+>>> squares[-1]  # último elemento
+25
+>>> squares[-3:]  # los últimos tres elementos
+[9, 16, 25]
+>>> squares[:]
+[1, 4, 9, 16, 25]
+```
+Las listas también admiten operaciones como concatenación:
+```python
+>>> squares + [36, 49, 64, 81, 100]  # concatenación de listas
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+>>> squares * 2  # repetición de listas
+[1, 4, 9, 16, 25, 1, 4, 9, 16, 25]
+```
+Las listas son mutables, y sus elementos pueden ser cambiados en su lugar:
+```python
+>>> len(squares)  # longitud de la lista
+5
+>>> squares[0] = 36  # asignación de un nuevo valor
+>>> squares
+[36, 4, 9, 16, 25]
+```
+También puedes agregar nuevos elementos al final de la lista, utilizando el método **list.append()** (veremos más sobre los métodos más adelante):
+```python
+>>> squares.append(49)  # añade un nuevo ítem al final
+>>> squares
+[36, 4, 9, 16, 25, 49]
+```
+La asignación simple en Python nunca copia datos. Al asignar una lista a una variable, esta hace referencia a la lista existente. Cualquier cambio que se realice en la lista mediante una variable se reflejará en todas las demás variables que hagan referencia a ella.
+```python
+>>> a = b = [1, 2, 3]  # ambas variables hacen referencia a la misma lista
+>>> a is b  # ambas variables apuntan al mismo objeto
+True
+>>> a[0] = 4  # cambia el primer elemento de la lista
+>>> b  # el cambio es visible a través de ambas variables
+[4, 2, 3]
+>>> a is b  # ambas variables siguen apuntando al mismo objeto
+True
+>>> a = [1, 2, 3]  # ahora a apunta a una nueva lista
+>>> a is b  # ahora a y b apuntan a diferentes objetos
+False
+>>> a
+[1, 2, 3]
+>>> b
+[4, 2, 3]
+>>> a[0] = 5  # cambia el primer elemento de la lista a
+>>> a
+[5, 2, 3]
+>>> b  # la lista b no se ve afectada
+[4, 2, 3]
+>>> a is b  # ambas variables siguen apuntando al mismo objeto
+False
+>>> a = b  # ahora a y b apuntan a la misma lista
+>>> a is b
+True
+>>> a[0] = 6  # cambia el primer elemento de la lista
+>>> a
+[6, 2, 3]
+>>> b  # el cambio es visible a través de ambas variables
+[6, 2, 3]
+```
 
+Todas las operaciones de rebanado retornan una nueva lista que contiene los elementos pedidos. Esto significa que la siguiente rebanada retorna una **shallow copy** (copia superficial) de la lista:
 
+`Una copia superficial`construye un nuevo objeto compuesto y luego (en la medida de lo posible) inserta references en él a los objetos encontrados en el original.
+```python
+>>> squares = [1, 4, 9, 16, 25]
+>>> squares_copy = squares[:]  # crea una copia superficial de la lista
+>>> squares_copy is squares  # ambas variables apuntan a diferentes objetos
+False
+>>> squares_copy == squares  # pero tienen el mismo contenido
+True
+>>> squares_copy[0] = 36  # cambia el primer elemento de la copia
+>>> squares_copy
+[36, 4, 9, 16, 25]
+>>> squares  # la lista original no se ve afectada
+[1, 4, 9, 16, 25]
+>>> squares_copy is squares  # ambas variables siguen apuntando a diferentes objetos
+False
+>>> squares_copy == squares  # y ahora tienen diferente contenido
+False
+>>> squares_copy = list(squares)  # otra forma de crear una copia superficial
+```
+También es posible asignar a una rebanada, y esto incluso puede cambiar la longitud de la lista o vaciarla totalmente:
+```python
+>>> squares = [1, 4, 9, 16, 25]
+>>> squares[2:4] = [8, 27]  # cambia los elementos en las posiciones 2 y 3
+>>> squares
+[1, 4, 8, 27, 25]
+>>> squares[2:4] = []  # elimina los elementos en las posiciones 2 y 3
+>>> squares
+[1, 4, 25]
+>>> squares[:] = []  # elimina todos los elementos de la lista
+>>> squares
+[]
+>>> del squares  # elimina la variable que referencia a la lista
+>>> squares
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'squares' is not defined
+```
+La función predefinida **len()** también sirve para las listas
+```python
+>>> len(squares)
+0
+>>> squares = [1, 4, 9, 16, 25]
+>>> len(squares)
+5
+>>> squares.append(36)
+>>> len(squares)
+6
+```
+### Más sobre listas
+Las listas pueden contener elementos de diferentes tipos:
+```python
+>>> a = [1, 2, 3, 4]
+>>> a
+[1, 2, 3, 4]
+>>> a.append('Hola')
+>>> a
+[1, 2, 3, 4, 'Hola']
+>>> a.append(5.0)
+>>> a
+[1, 2, 3, 4, 'Hola', 5.0]
+>>> a.append([6, 7, 8])
+>>> a
+[1, 2, 3, 4, 'Hola', 5.0, [6, 7, 8]]
+>>> len(a)
+7
+>>> a[6]
+[6, 7, 8]
+>>> a[6][0]
+6
+>>> a[6][1]
+7
+>>> a[6][2]
+8
+>>> a[6].append(9)
+>>> a
+[1, 2, 3, 4, 'Hola', 5.0, [6, 7, 8, 9]]
+>>> len(a)
+7
+>>> a[6]
+[6, 7, 8, 9]
+>>> a[6][3]
+9
+>>> a[6][3] = 10
+>>> a
+[1, 2, 3, 4, 'Hola', 5.0, [6, 7, 8, 10]]
+```
+Es posible anidar listas (crear listas que contengan otras listas), por ejemplo:
+```python
+>>> matrix = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+>>> matrix
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+>>> matrix[0]  # primer fila
+[1, 2, 3, 4]
+>>> matrix[1]  # segunda fila
+[5, 6, 7, 8]
+>>> matrix[2]  # tercera fila
+[9, 10, 11, 12]
+>>> matrix[0][0]  # primer elemento de la primera fila
+1
+>>> matrix[1][0]  # primer elemento de la segunda fila
+5
+>>> matrix[2][0]  # primer elemento de la tercera fila
+9
+>>> matrix[1][2]  # tercer elemento de la segunda fila
+7
+>>> matrix[2][3]  # cuarto elemento de la tercera fila
+12
+>>> matrix[2][3] = 13  # cambia el cuarto elemento de la tercera fila
+>>> matrix
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 13]]
+>>> len(matrix)  # número de filas
+3
+>>> len(matrix[0])  # número de columnas en la primera fila
+4
+```
