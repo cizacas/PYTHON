@@ -6,4 +6,4 @@ Apuntes de Fundamentos de Python del CFGS de Desarrollo de Aplicaciones Multipla
 
 **1. UNIDAD 1. – Introducción y tipos de datos básicos.**
 
-  [Apuntes de la Unidad 1.](apuntes/Tema1.md)
+  [Apuntes de la Unidad 1.](Apuntes/Tema1.md)
