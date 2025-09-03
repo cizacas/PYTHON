@@ -23,6 +23,7 @@
     - [Configurar el VSCode: **Detectar la versión de Python** y **Configurar el intérprete**](#configurar-el-vscode-detectar-la-versión-de-python-y-configurar-el-intérprete)
   - [Modo interactivo](#modo-interactivo)
   - [Utilizar comentarios](#utilizar-comentarios)
+  - [Indentación del código](#indentación-del-código)
   - [Definición de variables](#definición-de-variables)
   - [Tipos de datos](#tipos-de-datos)
   - [Listas](#listas)
@@ -231,6 +232,47 @@ spam = 1  # este es el segundo comentario
           # ... este es el tercer comentario!
 text = "# este no es un comentario porque está entre comillas dobles."
 ```
+Para comentar en varias líneas puedes usar una cadena multilínea.
+
+Como Python ignora las cadenas literales que no están asignadas a una variable, puedes añadir una cadena multilínea (entre comillas triples) a tu código y colocar tu comentario dentro:
+```python
+"""
+Este es un comentario
+escrito en más de una
+línea
+"""
+```
+## Indentación del código
+La sangría se refiere a los espacios al principio de una línea de código.
+Mientras que en otros lenguajes de programación la sangría solo se utiliza para facilitar la lectura, en Python es muy importante.
+
+Python utiliza la sangría para indicar un bloque de código.
+Por ejemplo, en otros lenguajes de programación, podrías escribir algo como esto:
+
+```c
+if (x > 0) {
+    printf("x es positivo\n");
+}
+```
+En Python, la misma estructura se escribiría así:
+
+```python
+if x > 0:
+    print("x es positivo")
+```
+La cantidad de espacios en la sangría es variable, pero todos los comandos en un bloque deben tener la misma cantidad de espacios. La convención es usar cuatro espacios por nivel de sangría.
+
+```python
+if x > 0:
+    print("x es positivo")
+    if x > 10:
+        print("x es mayor que 10")
+    else:
+        print("x es 10 o menor")
+else:
+    print("x no es positivo")
+```
+
 ## Definición de variables
 Una variable es un nombre que se refiere a un valor. En Python, no es necesario declarar una variable antes de usarla o declarar su tipo. Una variable se crea en el momento en que se le asigna un valor por primera vez.
 ```python  

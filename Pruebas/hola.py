@@ -1,3 +1,3 @@
 """Este módulo imprime un saludo."""
-# mi primer programa en Python
-print("Hello, World!")
+# la primera línea de comentario la obliga a utilizar la extensión Pylint
+print("Hola, Mundo!")
